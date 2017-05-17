@@ -1,4 +1,4 @@
-package controller;
+package br.com.diaristaja.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
