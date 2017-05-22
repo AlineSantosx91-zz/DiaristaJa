@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: diaristaja
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: aline.rsantos12
+Built-By: Aline
 Implementation-Vendor-Id: br.com.diaristaja
 Build-Jdk: 1.8.0_111
 Implementation-URL: http://maven.apache.org
