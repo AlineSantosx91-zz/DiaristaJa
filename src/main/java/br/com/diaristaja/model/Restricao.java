@@ -1,5 +1,8 @@
 package br.com.diaristaja.model;
 
-public class Restricao {
+import javax.persistence.Entity;
+
+@Entity
+public class Restricao extends DomainEntity {
 
 }

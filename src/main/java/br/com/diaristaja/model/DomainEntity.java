@@ -4,6 +4,15 @@ package br.com.diaristaja.model;
 import java.util.Date;
 import java.util.HashMap;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
@@ -11,27 +20,36 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * 
  * @author Aline Santos
  */
+@MappedSuperclass
 public abstract class DomainEntity {
 	
 	/**
 	 * ID do objeto no banco de dados.
 	 */
+	//@JsonIgnore
+	@Id @Column ( name = "Id" )
+	@GeneratedValue ( strategy = GenerationType.IDENTITY )
 	public Long id;
 	
 	/**
 	 * Codigo da entidade
 	 */
+	@Column ( name = "UUID", unique=true )
 	private String uuid;
 	
 	/**
 	 * Data e hora da criacao deste conteudo no sistema.
 	 */
-
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column ( name = "Created_Timestamp", nullable=true, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP" )
 	public Date createdTimestamp = new Date();
 
+	@JsonIgnore
+	@Column ( name = "Active", columnDefinition="tinyint(1) default 1" )
 	private boolean active = true;
 	
-	@SuppressWarnings("unused")
+	@Transient
+	@JsonIgnore
 	private boolean validated;
 	
 	@SuppressWarnings("unused")
@@ -122,6 +140,5 @@ public abstract class DomainEntity {
 		return hashMap.put(child.getUuid(), child);
 	
 	}
-
 
 }
