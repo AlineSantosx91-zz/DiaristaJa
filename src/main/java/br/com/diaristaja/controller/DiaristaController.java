@@ -12,13 +12,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.diaristaja.model.Diarista;
 import br.com.diaristaja.repository.DiaristaRepository;
+import br.com.diaristaja.service.DiaristaService;
 
 @RestController
 @RequestMapping("diarista")
 public class DiaristaController {
 	
+	private final DiaristaService diaristaService;
+	
 	@Autowired
-	DiaristaRepository diaristaRepository;
+	public DiaristaController(DiaristaService diaristaService){
+		this.diaristaService = diaristaService;
+	}
 	
 	@RequestMapping( value = "/teste", method= RequestMethod.GET)
 	public String home(){
@@ -27,30 +32,30 @@ public class DiaristaController {
 	
 	@RequestMapping( value = "/", method= RequestMethod.GET)
 	public List<Diarista> findAll(){
-		return diaristaRepository.findAll();
+		return diaristaService.findAll();
 	}
 	
 	@RequestMapping( value = "/", method= RequestMethod.POST)
 	public Diarista create(@RequestBody Diarista diarista){
-		return diaristaRepository.saveAndFlush(diarista);
+		return diaristaService.save(diarista);
 	}
 	
 	@RequestMapping( value = "/{id}", method= RequestMethod.GET)
 	public Diarista findById(@PathVariable Long id){
-		return diaristaRepository.findOne(id);
+		return diaristaService.findOne(id);
 	}
 	
 	@RequestMapping( value = "/{id}", method= RequestMethod.PUT)
 	public Diarista update(@PathVariable Long id, @RequestBody Diarista diarista){
-		Diarista existingDiarista = diaristaRepository.findOne(id);
+		Diarista existingDiarista = diaristaService.findOne(id);
 		BeanUtils.copyProperties(diarista, existingDiarista);
-		return diaristaRepository.saveAndFlush(diarista);
+		return diaristaService.save(diarista);
 	}
 	
 	@RequestMapping( value = "/{id}", method= RequestMethod.DELETE)
 	public Diarista delete(@PathVariable Long id){
-		Diarista existingDiarista = diaristaRepository.findOne(id);
-		diaristaRepository.delete(existingDiarista);
+		Diarista existingDiarista = diaristaService.findOne(id);
+		diaristaService.delete(existingDiarista);
 		return existingDiarista;
 	}
 
