@@ -1,5 +1,6 @@
 package br.com.diaristaja.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -20,8 +21,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @EqualsAndHashCode
-public abstract class User extends DomainEntity{
+public abstract class User extends DomainEntity implements Serializable{
 	
+	private static final long serialVersionUID = 8568585939333309470L;
+
 	@Column(name = "Email", unique=true, nullable=false)
 	public String email;
 	

@@ -1,8 +1,22 @@
 package br.com.diaristaja.model;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
-public class Restricao extends DomainEntity {
+@Getter
+@Setter
+@EqualsAndHashCode
+public class Restricao extends DomainEntity implements Serializable {
+	
+	private static final long serialVersionUID = 9006625510946227067L;
+	@Column(name="Descricao")
+	public String descricao;
 
 }

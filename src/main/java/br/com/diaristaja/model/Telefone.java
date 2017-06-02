@@ -7,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,9 +25,8 @@ public class Telefone extends DomainEntity implements Serializable {
 	@Column(length=9, name="Numero")
 	private String numero;
 	
-	@JsonBackReference
     @ManyToOne
 	@JoinColumn(name="Diarista_Id", referencedColumnName="Id")
-    private Diarista diasista;
+    private Diarista diarista;
 
 }

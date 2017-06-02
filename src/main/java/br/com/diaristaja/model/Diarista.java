@@ -1,5 +1,6 @@
 package br.com.diaristaja.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -10,6 +11,8 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -19,14 +22,17 @@ import lombok.Setter;
 @Getter
 @Setter
 @EqualsAndHashCode
-public class Diarista extends User {
+public class Diarista extends User implements Serializable {
 	
+	private static final long serialVersionUID = -2942007605175016196L;
+
 	@Column(name = "Nome")
 	public String nome;
 	
 	@Column(name = "Documento")
 	public String documento;
 	
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "Data_Nascimento")
 	public Date dataNascimento;
 	
@@ -36,9 +42,6 @@ public class Diarista extends User {
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Telefone> telefones;
-	
-	@Column(name = "Email")
-	public String email;
 	
 	@Column(name = "Valor_Minimo_Diaria")
 	public double valorMinimoDiaria;
