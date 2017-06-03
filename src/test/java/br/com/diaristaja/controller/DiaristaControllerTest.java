@@ -17,6 +17,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import br.com.diaristaja.model.Diarista;
 import br.com.diaristaja.service.DiaristaService;
+import retrofit2.Callback;
 
 @RunWith(MockitoJUnitRunner.class)
 public class DiaristaControllerTest {
@@ -49,6 +50,7 @@ public class DiaristaControllerTest {
 		assertNotNull(response);
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Test
 	public void createTest(){
 	

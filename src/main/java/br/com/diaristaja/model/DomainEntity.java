@@ -41,7 +41,7 @@ public abstract class DomainEntity {
 	 * Data e hora da criacao deste conteudo no sistema.
 	 */
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column ( name = "Created_Timestamp", nullable=true, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP" )
+	@Column ( name = "Created", nullable=true, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP" )
 	public Date createdTimestamp = new Date();
 
 	@JsonIgnore

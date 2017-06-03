@@ -13,14 +13,16 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
+import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
-@Setter
+@Setter(AccessLevel.PUBLIC)
 @EqualsAndHashCode
 public class Diarista extends User implements Serializable {
 	
@@ -28,6 +30,9 @@ public class Diarista extends User implements Serializable {
 
 	@Column(name = "Nome")
 	public String nome;
+	
+	@Transient
+	public String sobreNome;
 	
 	@Column(name = "Documento")
 	public String documento;
@@ -44,10 +49,10 @@ public class Diarista extends User implements Serializable {
 	private List<Telefone> telefones;
 	
 	@Column(name = "Valor_Minimo_Diaria")
-	public double valorMinimoDiaria;
+	public float valorMinimoDiaria;
 	
 	@Column(name = "Valor_Maximo_Diaria")
-	public double valorMaximoDiaria;
+	public float valorMaximoDiaria;
 
 		
 }
