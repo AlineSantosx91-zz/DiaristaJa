@@ -2,8 +2,12 @@ package br.com.diaristaja.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -40,5 +44,9 @@ public class Endereco extends DomainEntity implements Serializable{
 	
 	@Column(name = "Longitude")
 	public String longitude;
+	
+	@JsonIgnore
+	@OneToOne(mappedBy="endereco", cascade=CascadeType.PERSIST)
+	public User usuario;
 		
 }

@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import br.com.diaristaja.model.Diarista;
+import br.com.diaristaja.model.Endereco;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
@@ -26,15 +27,32 @@ public class DiaristaTest {
 
 	@Test
 	public void CadastraDiarista() throws IOException {
+		
 		Diarista diarista = new Diarista();
 		diarista.email = "aline@gmail.com";
+		diarista.documento = "8888777";
 		diarista.password = "12345";
 		diarista.nome = "Aline";
 		diarista.sobreNome = "Santos";
 		diarista.dataNascimento = new Date();
-		diarista.documento = "45444369";
+		diarista.ddd1 = "11";
+		diarista.numero1 = "977776666";
+		diarista.ddd2 = "11";
+		diarista.numero2 = "65443222";
 		diarista.valorMaximoDiaria = 200.0f;
 		diarista.valorMinimoDiaria = 150.0f;
+		
+		Endereco endereco = new Endereco();
+		endereco.cep= "08540510";
+		endereco.cidade = "São Paulo";
+		endereco.estado = "São Paulo";
+		endereco.endereco = "Rua Dez";
+		endereco.numero = "22";
+		endereco.referencia = "Bloco B";
+		endereco.latitude = "-23.5406338";
+		endereco.longitude = "-46.6342854";
+	
+		diarista.endereco = endereco;
 
 		IDiaristaTest diaristaTest = retrofit.create(IDiaristaTest.class);
 

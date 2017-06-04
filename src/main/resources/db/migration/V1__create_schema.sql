@@ -5,24 +5,27 @@ CREATE TABLE User (
 	Active BOOLEAN,
 	Email VARCHAR(255) NOT NULL UNIQUE,
 	Password VARCHAR(255),
+	DDD_1 VARCHAR(2),
+	Numero_1 VARCHAR(9),
+	DDD_2 VARCHAR(2),
+	Numero_2 VARCHAR(9),
 	Last_Login TIMESTAMP,
 	Modified TIMESTAMP,
 	Token VARCHAR(255),
+	Endereco_Id INT,
+
 	PRIMARY KEY (Id)
 );
 
 CREATE TABLE Diarista (
 	Id INT AUTO_INCREMENT NOT NULL,
-	UUID VARCHAR(255),
-	Created TIMESTAMP,
-	Active BOOLEAN,
 	Nome VARCHAR(255),
 	Documento VARCHAR(255) NOT NULL UNIQUE,
 	Data_Nascimento TIMESTAMP,
 	Id_Endereco INT,
 	Valor_Minimo_Diaria FLOAT,
 	Valor_Maximo_Diaria FLOAT,
-	PRIMARY KEY (Id)
+	PRIMARY KEY (Documento)
 );
 
 CREATE TABLE Endereco (
@@ -38,8 +41,10 @@ CREATE TABLE Endereco (
 	Cep VARCHAR(255),
 	Latitude VARCHAR(255),
 	Longitude VARCHAR(255),
+	User_Id INT,
 	PRIMARY KEY (Id)
 );
+
 
 CREATE TABLE Restricao (
 	Id INT AUTO_INCREMENT NOT NULL,
@@ -47,17 +52,6 @@ CREATE TABLE Restricao (
 	Created TIMESTAMP,
 	Active BOOLEAN,
 	Descricao VARCHAR(255),
-	PRIMARY KEY (Id)
-);
-
-CREATE TABLE Telefone (
-	Id INT AUTO_INCREMENT NOT NULL,
-	UUID VARCHAR(255),
-	Created TIMESTAMP,
-	Active BOOLEAN,
-	Ddd VARCHAR(255),
-	Numero VARCHAR(255),
-	Diarista_Id INT,
 	PRIMARY KEY (Id)
 );
 
