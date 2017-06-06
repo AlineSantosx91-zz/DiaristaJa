@@ -29,8 +29,8 @@ public class DiaristaTest {
 	public void CadastraDiarista() throws IOException {
 		
 		Diarista diarista = new Diarista();
-		diarista.email = "aline@gmail.com";
-		diarista.documento = "8888777";
+		diarista.email = "teste@gmail.com";
+		diarista.documento = "677";
 		diarista.password = "12345";
 		diarista.nome = "Aline";
 		diarista.sobreNome = "Santos";

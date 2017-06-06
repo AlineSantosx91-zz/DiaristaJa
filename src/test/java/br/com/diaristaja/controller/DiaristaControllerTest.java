@@ -3,10 +3,9 @@ package br.com.diaristaja.controller;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyLong;
+import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-
-import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -17,7 +16,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import br.com.diaristaja.model.Diarista;
 import br.com.diaristaja.service.DiaristaService;
-import retrofit2.Callback;
+import br.com.diaristaja.validators.Result;
 
 @RunWith(MockitoJUnitRunner.class)
 public class DiaristaControllerTest {
@@ -28,11 +27,12 @@ public class DiaristaControllerTest {
 	@Mock
 	private DiaristaService diaristaService;
 	
-	Diarista diarista;
+	Result<Diarista> diarista;
 	
+	@SuppressWarnings("unchecked")
 	@Before
 	public void setUp(){
-		this.diarista = mock(Diarista.class);
+		this.diarista = mock(Result.class);
 	}
 		
 	
@@ -40,17 +40,16 @@ public class DiaristaControllerTest {
 	@Test
 	public void findAllTest(){
 		//given
-		List<Diarista> diaristaList = mock(List.class);
+		Result<Diarista>  diaristaList = mock(Result.class);
 		
 		//when
 		when(diaristaService.findAll()).thenReturn(diaristaList);
 		
 		//then
-		List<Diarista> response = diaristaController.findAll();
+		Result<Diarista> response = diaristaController.findAll();
 		assertNotNull(response);
 	}
 	
-	@SuppressWarnings("unchecked")
 	@Test
 	public void createTest(){
 	
@@ -58,7 +57,7 @@ public class DiaristaControllerTest {
 		when(diaristaService.save(any(Diarista.class))).thenReturn(diarista);
 
 		//then
-		Diarista response = diaristaController.create(any(Diarista.class));
+		Result<Diarista> response = diaristaController.create(any(Diarista.class));
 		assertNotNull(response);
 	}
 	
@@ -69,19 +68,21 @@ public class DiaristaControllerTest {
 		when(diaristaService.findOne(anyLong())).thenReturn(diarista);
 		
 		//then
-		Diarista response = diaristaController.findById(anyLong());
+		Result<Diarista> response = diaristaController.findById(anyLong());
 		assertNotNull(response);
 	}
 	
 	@Test
 	public void updateTest(){
 		
+		//given
+		Diarista diaristaMock = mock(Diarista.class);
+		
 		//when
-		when(diaristaService.findOne(anyLong())).thenReturn(diarista);
-		when(diaristaService.save(any(Diarista.class))).thenReturn(diarista);
+		when(diaristaService.update(any(Diarista.class), anyLong())).thenReturn(diarista);
 		
 		//then
-		Diarista response = diaristaController.update(any(Long.class), diarista);
+		Result<Diarista> response = diaristaController.update(any(Long.class), eq(diaristaMock));
 		assertNotNull(response);
 	}
 
