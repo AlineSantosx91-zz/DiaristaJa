@@ -12,7 +12,9 @@ public class CORSFilter extends WebMvcConfigurerAdapter{
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
 		registry.addMapping("/**")
-			.allowedOrigins("http://localhost:4200", "http://nataliabraz.com", "http://*/", "https://*/")
-			.allowedMethods("PUT", "DELETE", "POST", "GET");
+			.allowedOrigins("*")
+			.allowedMethods("PUT", "DELETE", "POST", "GET")
+			.allowedHeaders("Content-Type, Access-Control-Allow-Origin, Access-Control-Allow-Headers, Authorization, X-Requested-With, requestId, Correlation-Id")
+			.allowCredentials(true);
 	}
 }
