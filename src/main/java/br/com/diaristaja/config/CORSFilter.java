@@ -12,7 +12,7 @@ public class CORSFilter extends WebMvcConfigurerAdapter{
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
 		registry.addMapping("/**")
-			.allowedOrigins("http://localhost:4200", "http://nataliabraz.com")
+			.allowedOrigins("http://localhost:4200", "http://nataliabraz.com", "http://*/", "https://*/")
 			.allowedMethods("PUT", "DELETE", "POST", "GET");
 	}
 }
