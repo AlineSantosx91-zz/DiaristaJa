@@ -13,8 +13,9 @@ public class CORSFilter extends WebMvcConfigurerAdapter{
 	public void addCorsMappings(CorsRegistry registry) {
 		registry.addMapping("/**")
 			.allowedOrigins("*")
-			.allowedMethods("PUT", "DELETE", "POST", "GET")
-			.allowedHeaders("Content-Type, Access-Control-Allow-Origin, Access-Control-Allow-Headers, Authorization, X-Requested-With, requestId, Correlation-Id")
+			.allowedMethods("PUT", "DELETE", "POST", "GET", "OPTIONS", "PATCH")
+			.allowedHeaders("*")
+//			.allowedHeaders("Content-Type, Access-Control-Allow-Origin, Access-Control-Allow-Headers, Authorization, X-Requested-With, requestId, Correlation-Id")
 			.allowCredentials(true);
 	}
 }
