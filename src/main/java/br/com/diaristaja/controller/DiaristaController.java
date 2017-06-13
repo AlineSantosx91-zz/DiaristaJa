@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.diaristaja.model.Diarista;
@@ -50,6 +51,11 @@ public class DiaristaController {
 	@RequestMapping( value = "/{id}", method= RequestMethod.DELETE)
 	public Result<Diarista> delete(@PathVariable Long id){
 		return diaristaService.delete(id);
+	}
+	
+	@RequestMapping( value = "/filtro", method= RequestMethod.GET)
+	public Result<Diarista> getDiaristasPorRestricao(@RequestParam("restricoes") String restricoes){
+		return diaristaService.getDiaristasFiltradasPorRestricao(restricoes);
 	}
 
 }

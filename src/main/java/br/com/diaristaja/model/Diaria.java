@@ -2,14 +2,10 @@ package br.com.diaristaja.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -47,7 +43,5 @@ public class Diaria extends DomainEntity implements Serializable {
 	@Column(name="Status")
 	public String status;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	public List<Restricao> restricoes;
 
 }

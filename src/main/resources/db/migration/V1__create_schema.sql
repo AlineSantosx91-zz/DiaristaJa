@@ -22,9 +22,9 @@ CREATE TABLE Diarista (
 	Nome VARCHAR(255),
 	Documento VARCHAR(255) NOT NULL UNIQUE,
 	Data_Nascimento TIMESTAMP,
-	Id_Endereco INT,
 	Valor_Minimo_Diaria FLOAT,
 	Valor_Maximo_Diaria FLOAT,
+	Restricoes VARCHAR(255),
 	PRIMARY KEY (Documento)
 );
 
@@ -45,16 +45,6 @@ CREATE TABLE Endereco (
 	PRIMARY KEY (Id)
 );
 
-
-CREATE TABLE Restricao (
-	Id INT AUTO_INCREMENT NOT NULL,
-	UUID VARCHAR(255),
-	Created TIMESTAMP,
-	Active BOOLEAN,
-	Descricao VARCHAR(255),
-	PRIMARY KEY (Id)
-);
-
 CREATE TABLE Diaria (
 	Id INT AUTO_INCREMENT NOT NULL,
 	UUID VARCHAR(255),
@@ -68,6 +58,8 @@ CREATE TABLE Diaria (
 	Status VARCHAR(255),
 	PRIMARY KEY (Id)
 );
+
+
 
 
 

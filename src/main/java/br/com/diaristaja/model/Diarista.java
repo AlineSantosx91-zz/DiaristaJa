@@ -43,5 +43,13 @@ public class Diarista extends User implements Serializable {
 
 	@Column(name = "Valor_Maximo_Diaria")
 	public float valorMaximoDiaria;
+	
+//	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinTable(name= "Diarista_Restricao", joinColumns= @JoinColumn(name="id_diarista"), 
+//	inverseJoinColumns=@JoinColumn(name="id_restricao"))
+//	public List<Restricao> restricoes;
+	
+	@Column(name = "Restricoes")
+	public String restricoes;
 
 }

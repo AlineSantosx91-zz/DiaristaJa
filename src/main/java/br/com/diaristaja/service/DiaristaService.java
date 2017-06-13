@@ -84,4 +84,9 @@ public class DiaristaService {
 		return result;
 	}
 
+	public Result<Diarista> getDiaristasFiltradasPorRestricao(String restricoesP) {
+
+		return new Result<Diarista>(this.diaristaRepository.getDiaristasFiltradasPorRestricao(restricoesP));
+	}
+
 }
