@@ -44,8 +44,8 @@ public class DiaristaTest {
 		diarista.valorMaximoDiaria = 200.0f;
 		diarista.valorMinimoDiaria = 150.0f;
 
-		diarista.restricoes = RestricaoEnum.LAVAR_ROUPA.getValor() + "," + 
-		RestricaoEnum.PASSAR_ROUPA.getValor();
+//		diarista.restricoes = RestricaoEnum.LAVAR_ROUPA.getValor() + "," + 
+//		RestricaoEnum.PASSAR_ROUPA.getValor();
 
 		Endereco endereco = new Endereco();
 		endereco.cep = "08540510";

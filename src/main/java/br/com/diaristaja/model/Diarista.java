@@ -2,13 +2,18 @@ package br.com.diaristaja.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
-
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AccessLevel;
@@ -44,12 +49,12 @@ public class Diarista extends User implements Serializable {
 	@Column(name = "Valor_Maximo_Diaria")
 	public float valorMaximoDiaria;
 	
-//	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinTable(name= "Diarista_Restricao", joinColumns= @JoinColumn(name="id_diarista"), 
-//	inverseJoinColumns=@JoinColumn(name="id_restricao"))
-//	public List<Restricao> restricoes;
-	
-	@Column(name = "Restricoes")
-	public String restricoes;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(name= "Diarista_Restricao", joinColumns= @JoinColumn(name="id_diarista"), 
+	inverseJoinColumns=@JoinColumn(name="id_restricao"))
+	public List<Restricao> restricoes;
+//	
+//	@Column(name = "Restricoes")
+//	public String restricoes;
 
 }

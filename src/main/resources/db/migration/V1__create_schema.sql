@@ -59,6 +59,20 @@ CREATE TABLE Diaria (
 	PRIMARY KEY (Id)
 );
 
+CREATE TABLE Restricao (
+	Id INT AUTO_INCREMENT NOT NULL,
+	UUID VARCHAR(255),
+	Created TIMESTAMP,
+	Active BOOLEAN,
+	Nome VARCHAR(255),
+	PRIMARY KEY (Id)
+);
+
+CREATE TABLE Diarista_Restricao(
+ 	Id_Diarista INT,
+ 	Id_Restricao INT
+);
+
 
 
 
