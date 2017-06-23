@@ -1,14 +1,16 @@
 package br.com.diaristaja.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.diaristaja.model.Diarista;
+import br.com.diaristaja.model.Restricao;
 import br.com.diaristaja.service.DiaristaService;
 import br.com.diaristaja.validators.Result;
 
@@ -53,8 +55,8 @@ public class DiaristaController {
 		return diaristaService.delete(id);
 	}
 	
-	@RequestMapping( value = "/filtro", method= RequestMethod.GET)
-	public Result<Diarista> getDiaristasPorRestricao(@RequestParam("restricoes") String restricoes){
+	@RequestMapping( value = "/filtro", method= RequestMethod.POST)
+	public Result<Diarista> getDiaristasPorRestricao(@RequestBody List<Restricao> restricoes){
 		return diaristaService.getDiaristasFiltradasPorRestricao(restricoes);
 	}
 

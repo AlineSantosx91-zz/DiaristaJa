@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AccessLevel;
@@ -50,10 +51,11 @@ public class Diarista extends User implements Serializable {
 	public float valorMaximoDiaria;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinTable(name= "Diarista_Restricao", joinColumns= @JoinColumn(name="id_diarista"), 
-	inverseJoinColumns=@JoinColumn(name="id_restricao"))
+	@JoinTable(name= "Diarista_Restricao", joinColumns= @JoinColumn(name="id_restricao"), 
+	inverseJoinColumns=@JoinColumn(name="id_diarista"))
 	public List<Restricao> restricoes;
 //	
+
 //	@Column(name = "Restricoes")
 //	public String restricoes;
 

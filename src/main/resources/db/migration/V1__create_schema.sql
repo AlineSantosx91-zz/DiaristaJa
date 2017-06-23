@@ -24,7 +24,6 @@ CREATE TABLE Diarista (
 	Data_Nascimento TIMESTAMP,
 	Valor_Minimo_Diaria FLOAT,
 	Valor_Maximo_Diaria FLOAT,
-	Restricoes VARCHAR(255),
 	PRIMARY KEY (Documento)
 );
 

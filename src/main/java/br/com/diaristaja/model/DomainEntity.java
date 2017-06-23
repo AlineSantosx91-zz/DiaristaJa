@@ -15,6 +15,7 @@ import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
 /**
  * Defines the domain entities base class, defining his behaviors and properties.
  * 
