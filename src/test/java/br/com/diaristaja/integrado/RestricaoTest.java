@@ -29,7 +29,7 @@ public class RestricaoTest {
 	public void cadastraRestricao() throws IOException{
 		
 		Restricao restricao = new Restricao();
-		restricao.nome = "Lavar Roupa";
+		restricao.nome = "Limpar Vidro";
 		
 		IRestricaoTest restricaoTest = retrofit.create(IRestricaoTest.class);
 

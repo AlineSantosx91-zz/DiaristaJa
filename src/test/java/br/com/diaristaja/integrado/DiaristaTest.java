@@ -33,6 +33,7 @@ public class DiaristaTest {
 	}
 
 	@Test
+	@Ignore
 	public void CadastraDiarista() throws IOException {
 
 		Diarista diarista = new Diarista();
@@ -96,11 +97,10 @@ public class DiaristaTest {
 	
 	
 	@Test
-	@Ignore
 	public void filtraDiaristaPorRestricao() throws IOException{
 		
 		Restricao restricao1 = new Restricao();
-		restricao1.nome = "Lavar Roupa";
+		restricao1.nome = "Lavar Louça";
 		
 		List<Restricao> restricoes = new ArrayList<Restricao>();
 		restricoes.add(restricao1);

@@ -50,9 +50,9 @@ public class Diarista extends User implements Serializable {
 	@Column(name = "Valor_Maximo_Diaria")
 	public float valorMaximoDiaria;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinTable(name= "Diarista_Restricao", joinColumns= @JoinColumn(name="id_restricao"), 
-	inverseJoinColumns=@JoinColumn(name="id_diarista"))
+	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@JoinTable(name= "Diarista_Restricao", joinColumns= @JoinColumn(name="id_diarista"), 
+	inverseJoinColumns=@JoinColumn(name="id_restricao"))
 	public List<Restricao> restricoes;
 //	
 
