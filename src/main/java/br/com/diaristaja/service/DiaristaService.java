@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.diaristaja.model.Diarista;
-import br.com.diaristaja.model.Restricao;
 import br.com.diaristaja.repository.DiaristaRepository;
 import br.com.diaristaja.validators.Result;
 import br.com.diaristaja.validators.Validator;
@@ -85,9 +84,9 @@ public class DiaristaService {
 		return result;
 	}
 
-	public Result<Diarista> getDiaristasFiltradasPorRestricao(List<Restricao> restricoesP) {
+	public Result<Diarista> getDiaristasFiltradasPorRestricao(List<Long> restricoesId) {
 
-		return new Result<Diarista>(this.diaristaRepository.getDiaristasFiltradasPorRestricao(restricoesP));
+		return new Result<Diarista>(this.diaristaRepository.getDiaristasFiltradasPorRestricao(restricoesId));
 	}
 
 }

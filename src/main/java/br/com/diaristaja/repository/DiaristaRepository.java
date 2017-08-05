@@ -7,12 +7,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import br.com.diaristaja.model.Diarista;
-import br.com.diaristaja.model.Restricao;
 
 public interface DiaristaRepository extends JpaRepository<Diarista, Long> {
 	
 	
-	@Query(value="SELECT d FROM Diarista d WHERE d.restricoes NOT IN (:restricoes)")
-	public List<Diarista> getDiaristasFiltradasPorRestricao(@Param("restricoes") List<Restricao> restricoes);
+	@Query(value="SELECT * FROM Diarista d WHERE"
+			+ " (SELECT * FROM DIARISTA_RESTRICAO dr WHERE d.id == dr.id_diarista AND"
+			+ "dr.id_restricao NOT IN :restricoesId)", nativeQuery = true)
+//	select * from diarista d where d.id not in (select id_diarista from diarista_restricao  )
+	public List<Diarista> getDiaristasFiltradasPorRestricao(@Param("restricoesId") List<Long> restricoesId);
 
 }

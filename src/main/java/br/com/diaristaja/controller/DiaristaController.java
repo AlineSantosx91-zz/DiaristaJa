@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.diaristaja.model.Diarista;
-import br.com.diaristaja.model.Restricao;
 import br.com.diaristaja.service.DiaristaService;
 import br.com.diaristaja.validators.Result;
 
@@ -56,8 +55,8 @@ public class DiaristaController {
 	}
 	
 	@RequestMapping( value = "/filtro", method= RequestMethod.POST)
-	public Result<Diarista> getDiaristasPorRestricao(@RequestBody List<Restricao> restricoes){
-		return diaristaService.getDiaristasFiltradasPorRestricao(restricoes);
+	public Result<Diarista> getDiaristasPorRestricao(@RequestBody List<Long> restricoesId){
+		return diaristaService.getDiaristasFiltradasPorRestricao(restricoesId);
 	}
 
 }

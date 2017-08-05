@@ -95,15 +95,15 @@ public class DiaristaTest {
 		assertNotNull(response.getResult().getId());
 	}
 	
-	
 	@Test
 	public void filtraDiaristaPorRestricao() throws IOException{
 		
 		Restricao restricao1 = new Restricao();
 		restricao1.nome = "Lavar Louça";
 		
-		List<Restricao> restricoes = new ArrayList<Restricao>();
-		restricoes.add(restricao1);
+		List<Long> restricoes = new ArrayList<Long>();
+//		restricoes.add(1L);
+		restricoes.add(2L);
 		
 		IDiaristaTest diaristaTest = retrofit.create(IDiaristaTest.class);
 
