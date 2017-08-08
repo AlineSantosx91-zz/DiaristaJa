@@ -11,10 +11,7 @@ import br.com.diaristaja.model.Diarista;
 public interface DiaristaRepository extends JpaRepository<Diarista, Long> {
 	
 	
-//	@Query(value="SELECT * FROM Diarista d WHERE"
-//			+ " (SELECT * FROM DIARISTA_RESTRICAO dr WHERE d.id == dr.id_diarista AND"
-//			+ "dr.id_restricao NOT IN :restricoesId)", nativeQuery = true)
-	@Query(value="SELECT d FROM Diarista AS d LEFT JOIN  d.restricoes AS r WHERE r.id NOT IN (:restricoesId)")
+	@Query(value="SELECT DISTINCT (d) FROM Diarista d LEFT OUTER JOIN d.restricoes r WHERE r.id NOT IN (:restricoesId)")
 	public List<Diarista> getDiaristasFiltradasPorRestricao(@Param("restricoesId") List<Long> restricoesId);
 
 }
