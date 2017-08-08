@@ -102,7 +102,7 @@ public class DiaristaTest {
 		restricao1.nome = "Lavar Louça";
 		
 		List<Long> restricoes = new ArrayList<Long>();
-//		restricoes.add(1L);
+		restricoes.add(7L);
 		restricoes.add(2L);
 		
 		IDiaristaTest diaristaTest = retrofit.create(IDiaristaTest.class);
