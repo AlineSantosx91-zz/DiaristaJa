@@ -1,6 +1,7 @@
 package br.com.diaristaja.model;
 
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -22,12 +23,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * @author Aline Santos
  */
 @MappedSuperclass
-public abstract class DomainEntity {
+public abstract class DomainEntity implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7494255147918284613L;
+
 	/**
 	 * ID do objeto no banco de dados.
 	 */
-	//@JsonIgnore
 	@Id @Column ( name = "Id" )
 	@GeneratedValue ( strategy = GenerationType.IDENTITY )
 	public Long id;

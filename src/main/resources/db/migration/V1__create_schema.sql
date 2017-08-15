@@ -24,7 +24,9 @@ CREATE TABLE Diarista (
 	Data_Nascimento TIMESTAMP,
 	Valor_Minimo_Diaria FLOAT,
 	Valor_Maximo_Diaria FLOAT,
-	PRIMARY KEY (Documento)
+	PRIMARY KEY (Documento),
+	FOREIGN KEY (Id) REFERENCES User(Id)
+
 );
 
 CREATE TABLE Endereco (

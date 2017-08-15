@@ -1,11 +1,11 @@
 package br.com.diaristaja.model;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -26,7 +26,8 @@ import lombok.Setter;
 @Getter
 @Setter(AccessLevel.PUBLIC)
 @EqualsAndHashCode
-public class Diarista extends User implements Serializable {
+@DiscriminatorValue("Diarista")
+public class Diarista extends User {
 
 	private static final long serialVersionUID = -2942007605175016196L;
 

@@ -11,7 +11,7 @@ import br.com.diaristaja.model.Diarista;
 public interface DiaristaRepository extends JpaRepository<Diarista, Long> {
 	
 	
-	@Query(value="SELECT DISTINCT (d) FROM Diarista d LEFT OUTER JOIN d.restricoes r WHERE r.id NOT IN (:restricoesId)")
-	public List<Diarista> getDiaristasFiltradasPorRestricao(@Param("restricoesId") List<Long> restricoesId);
+	@Query(value="SELECT d FROM Diarista d WHERE d.id NOT IN (SELECT d2.id FROM Diarista d2 Join d2.restricoes r WHERE r.id IN (:restricoesId))")
+	List<Diarista> getDiaristasFiltradasPorRestricao(@Param("restricoesId") List<Long> restricoesId);
 
 }

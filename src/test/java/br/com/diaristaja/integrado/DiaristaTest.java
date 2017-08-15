@@ -32,8 +32,7 @@ public class DiaristaTest {
 				.addConverterFactory(JacksonConverterFactory.create()).build();
 	}
 
-	@Test
-	@Ignore
+	
 	public void CadastraDiarista() throws IOException {
 
 		Diarista diarista = new Diarista();
@@ -94,7 +93,7 @@ public class DiaristaTest {
 		assertEquals(response.getStatus(), 1);
 		assertNotNull(response.getResult().getId());
 	}
-	
+
 	@Test
 	public void filtraDiaristaPorRestricao() throws IOException{
 		
@@ -114,7 +113,7 @@ public class DiaristaTest {
 		assertEquals(response.getStatus(), 1);
 		
 	}
-
+	
 	private String geraCPF() {
 		String iniciais = "";
 		Integer numero;

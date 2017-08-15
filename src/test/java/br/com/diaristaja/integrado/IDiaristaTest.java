@@ -16,6 +16,5 @@ public interface IDiaristaTest {
 	@POST("/diarista/filtro")
 	Call<Result<Diarista>> filterPorRestricao(@Body List<Long> restricoes);
 	
-	
 
 }

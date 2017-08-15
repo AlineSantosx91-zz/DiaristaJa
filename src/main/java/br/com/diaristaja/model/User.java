@@ -1,10 +1,10 @@
 package br.com.diaristaja.model;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -24,9 +24,14 @@ import lombok.Setter;
 @Getter
 @Setter
 @EqualsAndHashCode
-public abstract class User extends DomainEntity implements Serializable{
+@DiscriminatorValue("User")
+public abstract class User extends DomainEntity{
 	
-	private static final long serialVersionUID = 8568585939333309470L;
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5097558883260602274L;
 
 	@Column(name = "Email", unique=true, nullable=false)
 	public String email;

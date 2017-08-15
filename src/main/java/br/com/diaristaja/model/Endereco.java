@@ -1,7 +1,5 @@
 package br.com.diaristaja.model;
 
-import java.io.Serializable;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,7 +15,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @EqualsAndHashCode
-public class Endereco extends DomainEntity implements Serializable{
+public class Endereco extends DomainEntity{
 	
 	private static final long serialVersionUID = 5698777536213371699L;
 
