@@ -14,7 +14,7 @@ import br.com.diaristaja.service.DiaristaService;
 import br.com.diaristaja.validators.Result;
 
 @RestController
-@RequestMapping("diarista")
+@RequestMapping("diaristas")
 public class DiaristaController {
 	
 	private final DiaristaService diaristaService;

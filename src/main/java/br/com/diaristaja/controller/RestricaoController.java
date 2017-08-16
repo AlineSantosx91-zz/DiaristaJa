@@ -12,7 +12,7 @@ import br.com.diaristaja.service.RestricaoService;
 import br.com.diaristaja.validators.Result;
 
 @RestController
-@RequestMapping("restricao")
+@RequestMapping("restricoes")
 public class RestricaoController {
 
 	private final RestricaoService restricaoService;
