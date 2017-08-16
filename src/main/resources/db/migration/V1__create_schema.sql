@@ -107,7 +107,7 @@ insert
         Endereco
         (active, created, uuid, cep, cidade, endereco, estado, latitude, longitude, numero, referencia) 
     values
-        (true, '2017-05-21', '0002', '03381050', 'São Paulo', 'Travessa Itaperum', 'São Paulo', '-23,60063', '-46,557312', '1414', 2);
+        (true, '2017-05-21', '0002', '03381050', 'São Paulo', 'Travessa Itaperum', 'São Paulo', '-23.60063', '-46.557312', '1414', 2);
 
 insert 
     into
@@ -134,7 +134,7 @@ insert
         Endereco
         (active, created, uuid, cep, cidade, endereco, estado, latitude, longitude, numero, referencia) 
     values
-        (true, '2017-05-21', '0003', '05409-120', 'São Paulo', 'Viaduto Doutor João Tranchesi', 'São Paulo', '-23,584358', '-46,594635', '1923', 3);
+        (true, '2017-05-21', '0003', '05409-120', 'São Paulo', 'Viaduto Doutor João Tranchesi', 'São Paulo', '-23.584358', '-46.594635', '1923', 3);
 
 insert 
     into
