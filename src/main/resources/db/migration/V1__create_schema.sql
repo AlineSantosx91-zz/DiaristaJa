@@ -153,12 +153,71 @@ insert
 UPDATE endereco
 	SET user_id = 3
 		WHERE id = 3;
+		
+		
+ insert 
+    into
+        restricao
+		(active, created, uuid, nome)  
+    values
+        (true, '2017-05-21', '0001', 'Passar roupa');
+        
+
+ insert 
+    into
+        restricao
+		(active, created, uuid, nome)  
+    values
+        (true, '2017-05-21', '0002', 'Lavar roupa');		
         
         
+ insert 
+    into
+        restricao
+		(active, created, uuid, nome)  
+    values
+        (true, '2017-05-21', '0003', 'Passear com animais');
 
+ insert 
+    into
+        restricao
+		(active, created, uuid, nome)  
+    values
+        (true, '2017-05-21', '0004', 'Cuidar de crianças');
 
+ insert 
+    into
+        restricao
+		(active, created, uuid, nome)  
+    values
+        (true, '2017-05-21', '0005', 'Cozinhar');
+        
+ insert 
+    into
+        restricao
+		(active, created, uuid, nome)  
+    values
+        (true, '2017-05-21', '0006', 'Limpar vidros');
+        
+        
+ insert 
+    into
+        restricao
+		(active, created, uuid, nome)  
+    values
+        (true, '2017-05-21', '0007', 'Lavar louça');
 
-
-
-
-
+ 
+ insert 
+    into
+        restricao
+		(active, created, uuid, nome)  
+    values
+        (true, '2017-05-21', '0008', 'Lavar carro');
+        
+  insert 
+    into
+        restricao
+		(active, created, uuid, nome)  
+    values
+        (true, '2017-05-21', '0009', 'Compras de supermercado');
