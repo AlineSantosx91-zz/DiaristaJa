@@ -221,3 +221,35 @@ UPDATE endereco
 		(active, created, uuid, nome)  
     values
         (true, '2017-05-21', '0009', 'Compras de supermercado');
+        
+insert 
+    into
+        diarista_restricao
+        (id_diarista, id_restricao) 
+    values
+        (1, 1);
+        
+        
+insert 
+    into
+        diarista_restricao
+        (id_diarista, id_restricao) 
+    values
+        (1, 4);     
+        
+        
+insert 
+    into
+        diarista_restricao
+        (id_diarista, id_restricao) 
+    values
+        (3, 4); 
+        
+        
+insert 
+    into
+        diarista_restricao
+        (id_diarista, id_restricao) 
+    values
+        (3, 1); 
+
