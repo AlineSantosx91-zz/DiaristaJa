@@ -24,8 +24,8 @@ CREATE TABLE Diarista (
 	Data_Nascimento TIMESTAMP,
 	Valor_Minimo_Diaria FLOAT,
 	Valor_Maximo_Diaria FLOAT,
-	PRIMARY KEY (Documento),
-	FOREIGN KEY (Id) REFERENCES User(Id)
+	PRIMARY KEY (Documento)
+--	FOREIGN KEY (Id) REFERENCES User(Id)
 
 );
 
@@ -73,6 +73,90 @@ CREATE TABLE Diarista_Restricao(
  	Id_Diarista INT,
  	Id_Restricao INT
 );
+
+
+insert 
+    into
+        Endereco
+        (active, created, uuid, cep, cidade, endereco, estado, latitude, longitude, numero, referencia) 
+    values
+        (true, '2017-05-21', '0001', '05051000', 'São Paulo', 'R. Tito', 'São Paulo', '-23.5280038', '-46.6939981', '54', 1);
+
+insert 
+    into
+        user
+        (active, created, uuid, ddd_1, ddd_2, email, endereco_id, last_login, modified, numero_1, numero_2, password, token) 
+    values
+        (true, '2017-05-21', '0001', '11', null, 'edilmasilvasouza@gmail.com', 1, null, null, '955554444', null, '123', null);
+        
+insert 
+    into
+        diarista
+        (data_nascimento, documento, nome, valor_maximo_diaria, valor_minimo_diaria) 
+    values
+        ('1991-11-20', '0001', 'Edilma Silva Souza', '300', '150');
+        
+UPDATE endereco
+	SET user_id = 1
+		WHERE id = 1;
+    
+--SEPARACAO
+    
+insert 
+    into
+        Endereco
+        (active, created, uuid, cep, cidade, endereco, estado, latitude, longitude, numero, referencia) 
+    values
+        (true, '2017-05-21', '0002', '03381050', 'São Paulo', 'Travessa Itaperum', 'São Paulo', '-23,60063', '-46,557312', '1414', 2);
+
+insert 
+    into
+        user
+        (active, created, uuid, ddd_1, ddd_2, email, endereco_id, last_login, modified, numero_1, numero_2, password, token) 
+    values
+        (true, '2017-05-21', '0002', '11', null, 'GiovannaAzevedoPinto@dayrep.com', 2, null, null, '94236448', null, '1215', null);
+        
+insert 
+    into
+        diarista
+        (data_nascimento, documento, nome, valor_maximo_diaria, valor_minimo_diaria) 
+    values
+        ('1996-10-30', '0002', 'Giovanna Azevedo Pinto', '200', '120');
+        
+UPDATE endereco
+	SET user_id = 2
+		WHERE id = 2;
+        
+--SEPARACAO
+    
+insert 
+    into
+        Endereco
+        (active, created, uuid, cep, cidade, endereco, estado, latitude, longitude, numero, referencia) 
+    values
+        (true, '2017-05-21', '0003', '05409-120', 'São Paulo', 'Viaduto Doutor João Tranchesi', 'São Paulo', '-23,584358', '-46,594635', '1923', 3);
+
+insert 
+    into
+        user
+        (active, created, uuid, ddd_1, ddd_2, email, endereco_id, last_login, modified, numero_1, numero_2, password, token) 
+    values
+        (true, '2017-05-21', '0003', '11', null, 'RebecaSantosSouza@teleworm.us', 3, null, null, '7727-6842', null, '5654', null);
+        
+insert 
+    into
+        diarista
+        (data_nascimento, documento, nome, valor_maximo_diaria, valor_minimo_diaria) 
+    values
+        ('1939-02-04', '0003', 'Rebeca Silva Ferreira', '50', '80');
+        
+UPDATE endereco
+	SET user_id = 3
+		WHERE id = 3;
+        
+        
+
+
 
 
 
