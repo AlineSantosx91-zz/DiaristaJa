@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.diaristaja.model.Diarista;
+import br.com.diaristaja.model.Endereco;
 import br.com.diaristaja.service.DiaristaService;
 import br.com.diaristaja.validators.Result;
 
@@ -54,9 +55,14 @@ public class DiaristaController {
 		return diaristaService.delete(id);
 	}
 	
-	@RequestMapping( value = "/filtro", method= RequestMethod.POST)
+	@RequestMapping( value = "/filtro/restricao", method= RequestMethod.POST)
 	public Result<Diarista> getDiaristasPorRestricao(@RequestBody List<Long> restricoesId){
 		return diaristaService.getDiaristasFiltradasPorRestricao(restricoesId);
+	}
+	
+	@RequestMapping( value = "/filtro/localizacao", method= RequestMethod.POST)
+	public Result<Diarista> getDiaristasPorLocalizacao(@RequestBody Endereco endereco) throws IllegalArgumentException, IllegalAccessException{
+		return diaristaService.getDiaristasFiltradasPorLocalizacao(endereco);
 	}
 
 }

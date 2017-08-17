@@ -32,7 +32,6 @@ public class DiaristaTest {
 				.addConverterFactory(JacksonConverterFactory.create()).build();
 	}
 
-	
 	public void CadastraDiarista() throws IOException {
 
 		Diarista diarista = new Diarista();
@@ -49,28 +48,28 @@ public class DiaristaTest {
 		diarista.valorMaximoDiaria = 200.0f;
 		diarista.valorMinimoDiaria = 150.0f;
 
-//		diarista.restricoes = RestricaoEnum.LAVAR_ROUPA.getValor() + "," + 
-//		RestricaoEnum.PASSAR_ROUPA.getValor();
-		
+		// diarista.restricoes = RestricaoEnum.LAVAR_ROUPA.getValor() + "," +
+		// RestricaoEnum.PASSAR_ROUPA.getValor();
+
 		Restricao restricao1 = new Restricao();
 		restricao1.nome = "Lavar Roupa";
-		
+
 		Restricao restricao2 = new Restricao();
 		restricao2.nome = "Limpar vidro";
-		
+
 		Restricao restricao3 = new Restricao();
 		restricao3.nome = "Lavar Louça";
-		
+
 		Restricao restricao4 = new Restricao();
 		restricao4.nome = "Passar Roupa";
-		
+
 		List<Restricao> restricoes = new ArrayList<Restricao>();
-		
+
 		restricoes.add(restricao1);
 		restricoes.add(restricao2);
 		restricoes.add(restricao3);
 		restricoes.add(restricao4);
-		
+
 		diarista.restricoes = restricoes;
 
 		Endereco endereco = new Endereco();
@@ -82,7 +81,7 @@ public class DiaristaTest {
 		endereco.referencia = "Bloco B";
 		endereco.latitude = "-23.5406338";
 		endereco.longitude = "-46.6342854";
-		
+
 		diarista.endereco = endereco;
 
 		IDiaristaTest diaristaTest = retrofit.create(IDiaristaTest.class);
@@ -94,26 +93,42 @@ public class DiaristaTest {
 		assertNotNull(response.getResult().getId());
 	}
 
-	@Test
-	public void filtraDiaristaPorRestricao() throws IOException{
-		
+	public void filtraDiaristaPorRestricao() throws IOException {
+
 		Restricao restricao1 = new Restricao();
 		restricao1.nome = "Lavar Louça";
-		
+
 		List<Long> restricoes = new ArrayList<Long>();
 		restricoes.add(7L);
 		restricoes.add(2L);
-		
+
 		IDiaristaTest diaristaTest = retrofit.create(IDiaristaTest.class);
 
 		Call<Result<Diarista>> call = diaristaTest.filterPorRestricao(restricoes);
 		Result<Diarista> response = call.execute().body();
-		
+
 		assertNotNull(response);
 		assertEquals(response.getStatus(), 1);
-		
+
 	}
-	
+
+	@Test
+	public void filtraDiaristaPorLocalizacao() throws IOException {
+
+		Endereco endereco = new Endereco();
+		endereco.latitude = "-23.5280038";
+		endereco.longitude = "-46.6939981";
+
+		IDiaristaTest diaristaTest = retrofit.create(IDiaristaTest.class);
+
+		Call<Result<Diarista>> call = diaristaTest.filterPorLocalizacao(endereco);
+		Result<Diarista> response = call.execute().body();
+
+		assertNotNull(response);
+		assertEquals(response.getStatus(), 1);
+
+	}
+
 	private String geraCPF() {
 		String iniciais = "";
 		Integer numero;

@@ -1,5 +1,7 @@
 package br.com.diaristaja.service;
 
+import static org.hamcrest.CoreMatchers.instanceOf;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.diaristaja.model.Diarista;
+import br.com.diaristaja.model.Endereco;
+import br.com.diaristaja.model.FiltroLocalizacao;
 import br.com.diaristaja.repository.DiaristaRepository;
 import br.com.diaristaja.validators.Result;
 import br.com.diaristaja.validators.Validator;
@@ -87,6 +91,15 @@ public class DiaristaService {
 	public Result<Diarista> getDiaristasFiltradasPorRestricao(List<Long> restricoesId) {
 
 		return new Result<Diarista>(this.diaristaRepository.getDiaristasFiltradasPorRestricao(restricoesId));
+	}
+
+	public Result<Diarista> getDiaristasFiltradasPorLocalizacao(Endereco endereco) throws IllegalArgumentException, IllegalAccessException {
+		
+		double dist = 25;
+		
+		List<Long> list = this.diaristaRepository.getEnderecosByLatLong(endereco.latitude, endereco.longitude, dist);
+		
+		return new Result<Diarista>(this.diaristaRepository.getDiaristasFiltradasPorLocalizacao(list));
 	}
 
 }
