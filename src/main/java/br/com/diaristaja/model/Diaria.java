@@ -10,15 +10,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-
-
 @Entity
-@Getter
-@Setter
-@EqualsAndHashCode
 public class Diaria extends DomainEntity implements Serializable {
 
 	private static final long serialVersionUID = 5445531036895713622L;
@@ -42,6 +34,53 @@ public class Diaria extends DomainEntity implements Serializable {
 	
 	@Column(name="Status")
 	public String status;
-	
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
+	public Date getDataDiaria() {
+		return dataDiaria;
+	}
+
+	public void setDataDiaria(Date dataDiaria) {
+		this.dataDiaria = dataDiaria;
+	}
+
+	public Double getValor() {
+		return valor;
+	}
+
+	public void setValor(Double valor) {
+		this.valor = valor;
+	}
+
+	public String getDocumentoCliente() {
+		return documentoCliente;
+	}
+
+	public void setDocumentoCliente(String documentoCliente) {
+		this.documentoCliente = documentoCliente;
+	}
+
+	public String getDocumentoDiarista() {
+		return documentoDiarista;
+	}
+
+	public void setDocumentoDiarista(String documentoDiarista) {
+		this.documentoDiarista = documentoDiarista;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 }

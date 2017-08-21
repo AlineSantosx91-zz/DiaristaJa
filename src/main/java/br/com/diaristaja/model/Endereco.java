@@ -7,44 +7,108 @@ import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-
 @Entity
-@Getter
-@Setter
-@EqualsAndHashCode
 public class Endereco extends DomainEntity{
 	
 	private static final long serialVersionUID = 5698777536213371699L;
 
 	@Column(name = "Endereco")
-	public String endereco;
+	private String endereco;
 	
 	@Column(name = "Referencia")
-	public String referencia;
+	private String referencia;
 	
 	@Column(name = "Numero")
-	public String numero;
+	private String numero;
 	
 	@Column(name = "Cidade")
-	public String cidade;
+	private String cidade;
 	
 	@Column(name = "Estado")
-	public String estado;
+	private String estado;
 	
 	@Column(name = "Cep")
-	public String cep;
+	private String cep;
 	
 	@Column(name = "Latitude")
-	public String latitude;
+	private String latitude;
 	
 	@Column(name = "Longitude")
-	public String longitude;
+	private String longitude;
 	
 	@JsonIgnore
 	@OneToOne(mappedBy="endereco", cascade=CascadeType.PERSIST)
-	public User usuario;
-		
+	private User usuario;
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+	public String getReferencia() {
+		return referencia;
+	}
+
+	public void setReferencia(String referencia) {
+		this.referencia = referencia;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
+	public String getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+
+	public String getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
+	}
+
+	public User getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(User usuario) {
+		this.usuario = usuario;
+	}	
 }

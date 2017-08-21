@@ -17,47 +17,91 @@ import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import lombok.AccessLevel;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-
 @Entity
-@Getter
-@Setter(AccessLevel.PUBLIC)
-@EqualsAndHashCode
 @DiscriminatorValue("Diarista")
 public class Diarista extends User {
 
 	private static final long serialVersionUID = -2942007605175016196L;
 
 	@Column(name = "Nome")
-	public String nome;
+	private String nome;
 
 	@Transient
-	public String sobreNome;
+	private String sobreNome;
 
 	@Column(name = "Documento")
-	public String documento;
+	private String documento;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "Data_Nascimento")
     @DateTimeFormat(pattern="dd/MM/yyyy")
-	public Date dataNascimento;
+	private Date dataNascimento;
 
 	@Column(name = "Valor_Minimo_Diaria")
-	public float valorMinimoDiaria;
+	private float valorMinimoDiaria;
 
 	@Column(name = "Valor_Maximo_Diaria")
-	public float valorMaximoDiaria;
+	private float valorMaximoDiaria;
 	
 	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JoinTable(name= "Diarista_Restricao", joinColumns= @JoinColumn(name="id_diarista"), 
 	inverseJoinColumns=@JoinColumn(name="id_restricao"))
-	public List<Restricao> restricoes;
-//	
+	private List<Restricao> restricoes;
 
-//	@Column(name = "Restricoes")
-//	public String restricoes;
+	public String getNome() {
+		return nome;
+	}
 
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getSobreNome() {
+		return sobreNome;
+	}
+
+	public void setSobreNome(String sobreNome) {
+		this.sobreNome = sobreNome;
+	}
+
+	public String getDocumento() {
+		return documento;
+	}
+
+	public void setDocumento(String documento) {
+		this.documento = documento;
+	}
+
+	public Date getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public float getValorMinimoDiaria() {
+		return valorMinimoDiaria;
+	}
+
+	public void setValorMinimoDiaria(float valorMinimoDiaria) {
+		this.valorMinimoDiaria = valorMinimoDiaria;
+	}
+
+	public float getValorMaximoDiaria() {
+		return valorMaximoDiaria;
+	}
+
+	public void setValorMaximoDiaria(float valorMaximoDiaria) {
+		this.valorMaximoDiaria = valorMaximoDiaria;
+	}
+
+	public List<Restricao> getRestricoes() {
+		return restricoes;
+	}
+
+	public void setRestricoes(List<Restricao> restricoes) {
+		this.restricoes = restricoes;
+	}
+	
 }

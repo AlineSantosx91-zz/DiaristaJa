@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.diaristaja.model.Diarista;
-import br.com.diaristaja.model.Endereco;
+import br.com.diaristaja.model.FiltroLocalizacao;
 import br.com.diaristaja.service.DiaristaService;
 import br.com.diaristaja.validators.Result;
 
@@ -25,6 +25,7 @@ public class DiaristaController {
 		this.diaristaService = diaristaService;
 	}
 	
+	 
 	@RequestMapping( value = "/teste", method= RequestMethod.GET)
 	public String home(){
 		return "Teste diaristas!";
@@ -61,8 +62,8 @@ public class DiaristaController {
 	}
 	
 	@RequestMapping( value = "/filtro/localizacao", method= RequestMethod.POST)
-	public Result<Diarista> getDiaristasPorLocalizacao(@RequestBody Endereco endereco) throws IllegalArgumentException, IllegalAccessException{
-		return diaristaService.getDiaristasFiltradasPorLocalizacao(endereco);
+	public Result<Diarista> getDiaristasPorLocalizacao(@RequestBody FiltroLocalizacao filtroLocalizacao){
+		return diaristaService.getDiaristasFiltradasPorLocalizacao(filtroLocalizacao);
 	}
 
 }

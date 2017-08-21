@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Random;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import br.com.diaristaja.model.Diarista;
@@ -35,33 +34,31 @@ public class DiaristaTest {
 	public void CadastraDiarista() throws IOException {
 
 		Diarista diarista = new Diarista();
-		diarista.email = geraEmail();
-		diarista.documento = geraCPF();
-		diarista.password = "12345";
-		diarista.nome = "Aline";
-		diarista.sobreNome = "Santos";
-		diarista.dataNascimento = new Date();
-		diarista.ddd1 = "11";
-		diarista.numero1 = "977776666";
-		diarista.ddd2 = "11";
-		diarista.numero2 = "65443222";
-		diarista.valorMaximoDiaria = 200.0f;
-		diarista.valorMinimoDiaria = 150.0f;
+		diarista.setEmail(geraEmail());
+		diarista.setDocumento(geraCPF());
+		diarista.setPassword("12345");
+		diarista.setNome("Aline");
+		diarista.setSobreNome("Santos");
+		diarista.setDataNascimento(new Date());
+		diarista.setDdd1("11");
+		diarista.setNumero1("977776666");
+		diarista.setDdd2("11");
+		diarista.setNumero2("65443222");
+		diarista.setValorMaximoDiaria(200.0f);
+		diarista.setValorMinimoDiaria(150.0f);
 
-		// diarista.restricoes = RestricaoEnum.LAVAR_ROUPA.getValor() + "," +
-		// RestricaoEnum.PASSAR_ROUPA.getValor();
 
 		Restricao restricao1 = new Restricao();
-		restricao1.nome = "Lavar Roupa";
+		restricao1.setNome("Lavar Roupa");
 
 		Restricao restricao2 = new Restricao();
-		restricao2.nome = "Limpar vidro";
+		restricao2.setNome("Limpar vidro");
 
 		Restricao restricao3 = new Restricao();
-		restricao3.nome = "Lavar Louça";
+		restricao3.setNome("Lavar Louça");
 
 		Restricao restricao4 = new Restricao();
-		restricao4.nome = "Passar Roupa";
+		restricao4.setNome("Passar Roupa");
 
 		List<Restricao> restricoes = new ArrayList<Restricao>();
 
@@ -70,19 +67,19 @@ public class DiaristaTest {
 		restricoes.add(restricao3);
 		restricoes.add(restricao4);
 
-		diarista.restricoes = restricoes;
+//		diarista.restricoes = restricoes;
 
 		Endereco endereco = new Endereco();
-		endereco.cep = "08540510";
-		endereco.cidade = "São Paulo";
-		endereco.estado = "São Paulo";
-		endereco.endereco = "Rua Dez";
-		endereco.numero = "22";
-		endereco.referencia = "Bloco B";
-		endereco.latitude = "-23.5406338";
-		endereco.longitude = "-46.6342854";
+		endereco.setCep("08540510");
+		endereco.setCidade("São Paulo");
+		endereco.setEstado("São Paulo");
+		endereco.setEndereco("Rua Dez");
+		endereco.setNumero("22");
+		endereco.setReferencia("Bloco B");
+		endereco.setLatitude("-23.5406338");
+		endereco.setLongitude("-23.5406338");
 
-		diarista.endereco = endereco;
+//		diarista.endereco = endereco;
 
 		IDiaristaTest diaristaTest = retrofit.create(IDiaristaTest.class);
 
@@ -96,7 +93,7 @@ public class DiaristaTest {
 	public void filtraDiaristaPorRestricao() throws IOException {
 
 		Restricao restricao1 = new Restricao();
-		restricao1.nome = "Lavar Louça";
+		restricao1.setNome("Lavar Louça");
 
 		List<Long> restricoes = new ArrayList<Long>();
 		restricoes.add(7L);
@@ -112,12 +109,11 @@ public class DiaristaTest {
 
 	}
 
-	@Test
 	public void filtraDiaristaPorLocalizacao() throws IOException {
 
 		Endereco endereco = new Endereco();
-		endereco.latitude = "-23.5280038";
-		endereco.longitude = "-46.6939981";
+		endereco.setLatitude("-23.5280038");
+		endereco.setLongitude("-46.6939981");
 
 		IDiaristaTest diaristaTest = retrofit.create(IDiaristaTest.class);
 

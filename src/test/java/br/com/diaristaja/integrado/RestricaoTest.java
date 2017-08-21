@@ -25,11 +25,10 @@ public class RestricaoTest {
 				.addConverterFactory(JacksonConverterFactory.create()).build();
 	}
 	
-	@Test
 	public void cadastraRestricao() throws IOException{
 		
 		Restricao restricao = new Restricao();
-		restricao.nome = "Limpar Vidro";
+		restricao.setNome("Limpar Vidro");
 		
 		IRestricaoTest restricaoTest = retrofit.create(IRestricaoTest.class);
 

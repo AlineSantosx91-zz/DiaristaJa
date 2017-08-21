@@ -1,7 +1,5 @@
 package br.com.diaristaja.service;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.diaristaja.model.Diarista;
-import br.com.diaristaja.model.Endereco;
 import br.com.diaristaja.model.FiltroLocalizacao;
 import br.com.diaristaja.repository.DiaristaRepository;
+import br.com.diaristaja.repository.EnderecoRepository;
 import br.com.diaristaja.validators.Result;
 import br.com.diaristaja.validators.Validator;
 
@@ -20,11 +18,13 @@ import br.com.diaristaja.validators.Validator;
 public class DiaristaService {
 
 	private final DiaristaRepository diaristaRepository;
+	private final EnderecoRepository enderecoRepository;
 	Result<Diarista> result = null;
 
 	@Autowired
-	public DiaristaService(DiaristaRepository diaristaRepository) {
+	public DiaristaService(DiaristaRepository diaristaRepository, EnderecoRepository enderecoRepository) {
 		this.diaristaRepository = diaristaRepository;
+		this.enderecoRepository = enderecoRepository;
 	}
 
 	public Result<Diarista> findAll() {
@@ -44,15 +44,15 @@ public class DiaristaService {
 
 		List<Validator> validators = new ArrayList<Validator>();
 
-		if (diarista.email == null) {
+		if (diarista.getEmail() == null) {
 			validators.add(new Validator("E-mail é obrigatório"));
 		}
 
-		if (diarista.nome == null) {
+		if (diarista.getNome() == null) {
 			validators.add(new Validator("Nome é obrigatório"));
 		}
 
-		if (diarista.documento == null) {
+		if (diarista.getDocumento() == null) {
 			validators.add(new Validator("Documento é obrigatório"));
 		}
 
@@ -93,11 +93,9 @@ public class DiaristaService {
 		return new Result<Diarista>(this.diaristaRepository.getDiaristasFiltradasPorRestricao(restricoesId));
 	}
 
-	public Result<Diarista> getDiaristasFiltradasPorLocalizacao(Endereco endereco) throws IllegalArgumentException, IllegalAccessException {
-		
-		double dist = 25;
-		
-		List<Long> list = this.diaristaRepository.getEnderecosByLatLong(endereco.latitude, endereco.longitude, dist);
+	public Result<Diarista> getDiaristasFiltradasPorLocalizacao(FiltroLocalizacao filtroLocalizacao){
+				
+		List<Long> list = this.enderecoRepository.getEnderecosByLatLong(filtroLocalizacao.getLatitude(), filtroLocalizacao.getLongitude(), filtroLocalizacao.getRaio());
 		
 		return new Result<Diarista>(this.diaristaRepository.getDiaristasFiltradasPorLocalizacao(list));
 	}
