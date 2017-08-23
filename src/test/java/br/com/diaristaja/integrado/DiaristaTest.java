@@ -91,7 +91,6 @@ public class DiaristaTest {
 		assertNotNull(response.getResult().getId());
 	}
 
-	@Test
 	public void FiltroAvancadoDiarista() throws IOException {
 
 		List<Long> restricoes = new ArrayList<Long>();
