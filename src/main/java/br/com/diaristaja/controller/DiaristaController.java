@@ -1,7 +1,5 @@
 package br.com.diaristaja.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,7 +23,6 @@ public class DiaristaController {
 		this.diaristaService = diaristaService;
 	}
 	
-	 
 	@RequestMapping( value = "/teste", method= RequestMethod.GET)
 	public String home(){
 		return "Teste diaristas!";
@@ -56,9 +53,9 @@ public class DiaristaController {
 		return diaristaService.delete(id);
 	}
 	
-	@RequestMapping( value = "/filtro/restricao", method= RequestMethod.POST)
-	public Result<Diarista> getDiaristasPorRestricao(@RequestBody List<Long> restricoesId){
-		return diaristaService.getDiaristasFiltradasPorRestricao(restricoesId);
+	@RequestMapping( value = "/filtro/avancado", method= RequestMethod.POST)
+	public Result<Diarista> getDiaristasPorRestricao(@RequestBody FiltroLocalizacao filtroLocalizacao){
+		return diaristaService.getDiaristasFiltroAvancado(filtroLocalizacao);
 	}
 	
 	@RequestMapping( value = "/filtro/localizacao", method= RequestMethod.POST)

@@ -14,6 +14,7 @@ import org.junit.Test;
 
 import br.com.diaristaja.model.Diarista;
 import br.com.diaristaja.model.Endereco;
+import br.com.diaristaja.model.FiltroLocalizacao;
 import br.com.diaristaja.model.Restricao;
 import br.com.diaristaja.validators.Result;
 import retrofit2.Call;
@@ -90,18 +91,23 @@ public class DiaristaTest {
 		assertNotNull(response.getResult().getId());
 	}
 
-	public void filtraDiaristaPorRestricao() throws IOException {
-
-		Restricao restricao1 = new Restricao();
-		restricao1.setNome("Lavar Louça");
+	@Test
+	public void FiltroAvancadoDiarista() throws IOException {
 
 		List<Long> restricoes = new ArrayList<Long>();
 		restricoes.add(7L);
-		restricoes.add(2L);
+		restricoes.add(4L);
+		
+		FiltroLocalizacao filtroLocalizacao = new FiltroLocalizacao();
+		filtroLocalizacao.setLatitude("-23.60063");
+		filtroLocalizacao.setLongitude("-46.557312");
+		filtroLocalizacao.setValor(170);
+		filtroLocalizacao.setRestricoesId(restricoes);
+		filtroLocalizacao.setRaio(5);
 
 		IDiaristaTest diaristaTest = retrofit.create(IDiaristaTest.class);
 
-		Call<Result<Diarista>> call = diaristaTest.filterPorRestricao(restricoes);
+		Call<Result<Diarista>> call = diaristaTest.filterAvancado(filtroLocalizacao);
 		Result<Diarista> response = call.execute().body();
 
 		assertNotNull(response);
@@ -109,6 +115,7 @@ public class DiaristaTest {
 
 	}
 
+	
 	public void filtraDiaristaPorLocalizacao() throws IOException {
 
 		Endereco endereco = new Endereco();

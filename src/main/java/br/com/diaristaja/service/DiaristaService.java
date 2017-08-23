@@ -88,9 +88,12 @@ public class DiaristaService {
 		return result;
 	}
 
-	public Result<Diarista> getDiaristasFiltradasPorRestricao(List<Long> restricoesId) {
+	public Result<Diarista> getDiaristasFiltroAvancado(FiltroLocalizacao filtroLocalizacao) {
+		
+		List<Long> list = this.enderecoRepository.getEnderecosByLatLong(filtroLocalizacao.getLatitude(), filtroLocalizacao.getLongitude(), 10);
+		
+		return new Result<Diarista>(this.diaristaRepository.getDiaristasFiltroAvancado(list, filtroLocalizacao.getValor(), filtroLocalizacao.getRestricoesId()));
 
-		return new Result<Diarista>(this.diaristaRepository.getDiaristasFiltradasPorRestricao(restricoesId));
 	}
 
 	public Result<Diarista> getDiaristasFiltradasPorLocalizacao(FiltroLocalizacao filtroLocalizacao){
