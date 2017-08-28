@@ -43,7 +43,7 @@ public class Diarista extends User {
 	@Column(name = "Valor_Maximo_Diaria")
 	private float valorMaximoDiaria;
 	
-	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@OneToMany(fetch = FetchType.EAGER)
 	@JoinTable(name= "Diarista_Restricao", joinColumns= @JoinColumn(name="id_diarista"), 
 	inverseJoinColumns=@JoinColumn(name="id_restricao"))
 	private List<Restricao> restricoes;
